@@ -1,7 +1,7 @@
 version: '3'
 services:
   client:
-    image: multicast-iperf
+    image: ${REPO}/${IMAGE}:${TAG}
     depends_on:
       - server-01
       - server-02
@@ -9,21 +9,21 @@ services:
       - "5001/udp"
     environment:
       - ROLE=client
-      - SERVER_ADDR=224.0.67.67
-    command: -u --ttl 1 -t 30 -b 100K -F /data/sample.mp4
+      - SERVER_ADDR=${MULTICAST}
+    command: -u --ttl ${TTL} -t ${TIME} -L ${LENGTH} -b ${BANDWIDTH} -F ${FILE}
 
   server-01:
-    image: multicast-iperf
+    image: ${REPO}/${IMAGE}:${TAG}
     ports:
       - "5001/udp"
     environment:
       - ROLE=server
-    command: -u -B 224.0.67.67 -i 1
+    command: -u -B ${MULTICAST} -i ${INTERVAL}
   server-02:
-    image: multicast-iperf
+    image: ${REPO}/${IMAGE}:${TAG}
     ports:
       - "5001/udp"
     environment:
       - ROLE=server
-    command: -u -B 224.0.67.67 -i 1
+    command: -u -B ${MULTICAST} -i ${INTERVAL}
 ...
