@@ -1,0 +1,29 @@
+version: '3'
+services:
+  client:
+    image: multicast-iperf
+    depends_on:
+      - server-01
+      - server-02
+    ports:
+      - "5001/udp"
+    environment:
+      - ROLE=client
+      - SERVER_ADDR=224.0.67.67
+    command: -u --ttl 1 -t 30 -b 100K -F /data/sample.mp4
+
+  server-01:
+    image: multicast-iperf
+    ports:
+      - "5001/udp"
+    environment:
+      - ROLE=server
+    command: -u -B 224.0.67.67 -i 1
+  server-02:
+    image: multicast-iperf
+    ports:
+      - "5001/udp"
+    environment:
+      - ROLE=server
+    command: -u -B 224.0.67.67 -i 1
+...
