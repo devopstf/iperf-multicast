@@ -42,5 +42,5 @@ clean                          Cleaning up the whole stuff
 logs                           Gathering logs from containers
 run                            Setting up two listeners and one sender
 ```
-
+If you need to re-build the docker image we use, you must add a sample file into docker folder, properly modifying the ``.env`` file.
 
