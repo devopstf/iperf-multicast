@@ -30,11 +30,13 @@ FILE=/data/sample.mp4
 ########################
 # iperf UDP parameters #
 ########################
-SERVER_PORT = 5001
+PORT=5001
+PROTOCOL=udp
 TTL=1
 MULTICAST=224.0.67.67
 TIME=10
-LENGTH=100K
+LENGTH=2K
+WINDOW=4K
 BANDWIDTH=1M
 INTERVAL=1
 ```
@@ -51,5 +53,7 @@ run                            Setting up two listeners and one sender
 ```
 If you need to re-build the docker image we use, you must add a sample file into docker folder, properly modifying the ``.env`` file.
 
-Log will be written to ``iperf.log`` file issuing ``make logs``.
+Log will be written to ``iperf.log`` file issuing ``make logs``. The file will be removed by ``make clean``receipe.
+
+The traffic generation is based on a ``smple.mp4`` file located in ``/data``. You can use the default one by setting "FILE" parameter to blank within ``.env`` file.
 

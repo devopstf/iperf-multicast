@@ -3,16 +3,18 @@
 
 REPO ?= devopsman
 IMAGE ?= multicast-iperf
-TAG ?= $(shell bash -c 'read -s -p "TAG: " tag; echo $$tag')
+TAG ?= $(shell bash -c 'read -p "TAG: " tag; echo $$tag')
 
 run: ## Setting up two listeners and one sender
 	@docker-compose up -d
 
 logs: ## Gathering logs from containers
+	@touch iperf.log
 	@docker-compose logs >> iperf.log && cat iperf.log
 
 clean: ## Cleaning up the whole stuff
 	@docker-compose down
+	@rm -f iperf.log
 
 build: ## Building a new image
 	@docker build -t $(REPO)/$(IMAGE):$(TAG) ./docker/

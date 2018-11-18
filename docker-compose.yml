@@ -6,24 +6,24 @@ services:
       - server-01
       - server-02
     ports:
-      - "5001/udp"
+      - "${PORT}/${PROTOCOL}"
     environment:
       - ROLE=client
       - SERVER_ADDR=${MULTICAST}
-    command: -u --ttl ${TTL} -t ${TIME} -L ${LENGTH} -b ${BANDWIDTH} -F ${FILE}
+    command: -u --ttl ${TTL} -t ${TIME} -l ${LENGTH} -w ${WINDOW} -b ${BANDWIDTH} -F ${FILE}
 
   server-01:
     image: ${REPO}/${IMAGE}:${TAG}
     ports:
-      - "5001/udp"
+      - "${PORT}/${PROTOCOL}"
     environment:
       - ROLE=server
-    command: -u -B ${MULTICAST} -i ${INTERVAL}
+    command: -u -B ${MULTICAST} -l ${LENGTH} -w ${WINDOW} -i ${INTERVAL}
   server-02:
     image: ${REPO}/${IMAGE}:${TAG}
     ports:
-      - "5001/udp"
+      - "${PORT}/${PROTOCOL}"
     environment:
       - ROLE=server
-    command: -u -B ${MULTICAST} -i ${INTERVAL}
+    command: -u -B ${MULTICAST} -l ${LENGTH} -w ${WINDOW} -i ${INTERVAL}
 ...
