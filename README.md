@@ -19,16 +19,23 @@ and two containers in server mode (i.e. receivers) properly binded to a multicas
 The traffic generator parameters can be customized editing the ``.env`` file, that defaults to the following values:
 
 ```
+#####################
+# Docker parameters #
+#####################
 REPO=devopsman
 IMAGE=multicast-iperf
 TAG=dev-05
+FILE=/data/sample.mp4
+
+########################
+# iperf UDP parameters #
+########################
 SERVER_PORT = 5001
 TTL=1
 MULTICAST=224.0.67.67
 TIME=10
-LENGTH=8K
-FILE=/data/sample.mp4
-BANDWIDTH=100K
+LENGTH=100K
+BANDWIDTH=1M
 INTERVAL=1
 ```
 
