@@ -5,13 +5,13 @@ REPO ?= devopsman
 IMAGE ?= multicast-iperf
 TAG ?= $(shell bash -c 'read -s -p "TAG: " tag; echo $$tag')
 
-up: ## Setting up two listeners and one sender
+run: ## Setting up two listeners and one sender
 	@docker-compose up -d
 
 logs: ## Gathering logs from containers
 	@docker-compose logs >> iperf.log
 
-down: ## Cleaning up the whole stuff
+clean: ## Cleaning up the whole stuff
 	docker-compose down
 
 build: ## Building a new image

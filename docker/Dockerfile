@@ -7,10 +7,6 @@ FROM alpine:3.1
 MAINTAINER DevOpsTF <devopstenerife@gmail.com>
 
 ADD run_iperf.sh /bin/
-ADD rsyslog.conf /bin/
-ADD 50-default.conf /bin/
-ADD 49-remote.conf /bin/
-ADD 49-remote-ls.conf /bin/
 ADD sample.mp4 /data/
 
 RUN apk update &&\
