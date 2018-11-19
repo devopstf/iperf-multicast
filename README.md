@@ -24,7 +24,7 @@ The traffic generator parameters can be customized editing the ``.env`` file, th
 #####################
 REPO=devopsman
 IMAGE=multicast-iperf
-TAG=dev-05
+TAG=dev-06
 FILE=/data/sample.mp4
 
 ########################
@@ -57,3 +57,9 @@ Log will be written to ``iperf.log`` file issuing ``make logs``. The file will b
 
 The traffic generation is based on a ``smple.mp4`` file located in ``/data``. You can use the default one by setting "FILE" parameter to blank within ``.env`` file.
 
+## Develop
+
+Work in progress you can contribute to:
+
+* Prompting for the parameters to be populated into ``.env`` file.
+* Getting iperf to generate multicast traffic from within an OCP cluster, and listening to it from outside.

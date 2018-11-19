@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: multicast-iperf
+  labels:
+    app: iperf
+spec:
+  hostNetwork: true
+  containers:
+  - name: iperf-container
+    image: devopsman/multicast-iperf:ocp-01
+#    ports:
+#      - containerPort: 5001
+#        hostPort: 5001
+    env:
+    - name: ROLE
+      value: "client"
+    - name: SERVER_ADDR
+      value: "224.0.67.67"
+    - name: TTL
+      value: "2"
+    - name: LENGTH
+      value: "2K"
+    - name: WINDOW
+      value: "8K"
+    - name: BANDWIDTH
+      value: "100K"
+    - name: UDP
+      value: "u"

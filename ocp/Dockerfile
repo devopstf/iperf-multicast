@@ -7,7 +7,6 @@ FROM alpine:3.1
 MAINTAINER DevOpsTF <devopstenerife@gmail.com>
 
 ADD run_iperf.sh /bin/
-ADD sample.mp4 /data/
 
 RUN apk update &&\
  apk add bash &&\
