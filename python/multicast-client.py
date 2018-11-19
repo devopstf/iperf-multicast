@@ -4,7 +4,7 @@
 import socket
 
 ANY = "0.0.0.0" 
-MCAST_ADDR = "224.0.67.67"
+MCAST_ADDR = "224.0.0.1"
 MCAST_PORT = 5001
 
 # Create a UDP socket

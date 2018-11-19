@@ -2,6 +2,14 @@
 
 This demo is a simplified version of [Mark Betz's repo](https://github.com/Markbnj/cluster-iperf). This version is focused on Multicast UDP traffic.
 
+When we are dealing with multicast addresses, we have to take into account that **the ``224.0.0.0/24`` CIDR has to be used for local networking**. Within this demo we are using a Virtual Box's internal or host-only network subscribed to ``224.0.0.1`` address (All the hosts within the local network). Our ``minishift`` VM is a Centos-based host machine, provisioned with OverlayFS and its ``firewalld`` service is set to inactive.
+
+The iperf process configured as client (i.e. traffic generator) is deployed as a simple pod in ``hostNetwork`` mode, that is an anti-pattern requiring priviledged access to Openshift API, hence we should issue the following command before deploying it (assuming we are logging in as the admin user into minishift):
+
+```
+oc adm policy add-scc-to-user privileged admin
+```
+
 ## Pre-requisites
 
 We need a few things for getting this demo working:
@@ -33,7 +41,7 @@ FILE=/data/sample.mp4
 PORT=5001
 PROTOCOL=udp
 TTL=1
-MULTICAST=224.0.67.67
+MULTICAST=224.0.0.1
 TIME=10
 LENGTH=2K
 WINDOW=4K
@@ -62,4 +70,5 @@ The traffic generation is based on a ``smple.mp4`` file located in ``/data``. Yo
 Work in progress you can contribute to:
 
 * Prompting for the parameters to be populated into ``.env`` file.
-* Getting iperf to generate multicast traffic from within an OCP cluster, and listening to it from outside.
+* Getting iperf to generate multicast traffic from within an OCP cluster, and listening to it from outside. [x]
+* Setting up the traffic generator as an Openshift's ``job`` instead of a simple pod.

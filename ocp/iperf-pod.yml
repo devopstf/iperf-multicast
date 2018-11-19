@@ -9,9 +9,6 @@ spec:
   containers:
   - name: iperf-container
     image: devopsman/multicast-iperf:ocp-02
-#    ports:
-#      - containerPort: 5001
-#        hostPort: 5001
     env:
     - name: ROLE
       value: "client"
@@ -28,4 +25,4 @@ spec:
     - name: UDP
       value: "u"
     - name: BIND
-      value: "224.0.67.67"
+      value: "224.0.0.1"
