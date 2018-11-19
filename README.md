@@ -113,3 +113,11 @@ Work in progress you can contribute to:
 * Prompting for the parameters to be populated into ``.env`` file.
 * Getting iperf to generate multicast traffic from within an OCP cluster, and listening to it from outside.
 * Setting up the traffic generator as an Openshift's ``job`` instead of a simple pod.
+
+## References
+
+* [Multicast Address](https://en.wikipedia.org/wiki/Multicast_address)
+* [Accessing K8s pods from outside of the cluster](http://alesnosek.com/blog/2017/02/14/accessing-kubernetes-pods-from-outside-of-the-cluster/)
+* [Multicast Addressing Pitfalls](http://aviadezra.blogspot.com/2009/07/multicast-ip-udp-igmp-multi-homed.html)
+* [iPerf](https://iperf.fr)
+* [How to allow multicast traffic with firewallD in RHEL 7](https://access.redhat.com/solutions/1587673)
