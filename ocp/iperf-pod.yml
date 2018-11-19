@@ -8,7 +8,7 @@ spec:
   hostNetwork: true
   containers:
   - name: iperf-container
-    image: devopsman/multicast-iperf:ocp-01
+    image: devopsman/multicast-iperf:ocp-02
 #    ports:
 #      - containerPort: 5001
 #        hostPort: 5001
@@ -16,7 +16,7 @@ spec:
     - name: ROLE
       value: "client"
     - name: SERVER_ADDR
-      value: "224.0.67.67"
+      value: "192.168.99.100"
     - name: TTL
       value: "2"
     - name: LENGTH
@@ -27,3 +27,5 @@ spec:
       value: "100K"
     - name: UDP
       value: "u"
+    - name: BIND
+      value: "224.0.67.67"
