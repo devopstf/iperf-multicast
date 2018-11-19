@@ -14,12 +14,15 @@ oc adm policy add-scc-to-user privileged admin
 
 We need a few things for getting this demo working:
 
+* ``Python 2.7+`` installed.
 * Docker and docker-compose installed and properly configured.
 * Multicast traffic allowed within your network environment (IGMP enabled within your routers, switches, etc.).
 * Your host's network interface must be multicast enabled.
 * The same applies for your host's firewall.
 
 ## Usage
+
+### Docker demo
 
 The demo is based on ``docker-compose`` tool for running. The ``docker-compose.yml`` script will launch an iperf alpine-based container in client mode (i.e. as sender),
 and two containers in server mode (i.e. receivers) properly binded to a multicast group's IP address.
@@ -65,10 +68,48 @@ Log will be written to ``iperf.log`` file issuing ``make logs``. The file will b
 
 The traffic generation is based on a ``smple.mp4`` file located in ``/data``. You can use the default one by setting "FILE" parameter to blank within ``.env`` file.
 
+### Minishift Demo
+
+Deploying iperf traffic generator on minishift:
+
+1. Starting up minishift
+
+```
+minishift start --vm-driver=virtualbox
+```
+
+2. Starting up the multicast listener in our localhost
+
+```
+cd python/
+python multicast-client.py
+```
+
+3. Creating a pod
+
+```
+cd ocp/
+oc create -f iperf-pod.yml
+```
+
+The datagrams hex-dump should be appearing in the terminal where the python script is attached to, displaying the interface IP address, and port.
+
+4. Displaying logs from iperf client:
+
+```
+oc logs multicast-iperf
+```
+
+5. Deleting the iperf pod
+
+```
+oc delete pod multicast-iperf --grace-period=0
+```
+
 ## Develop
 
 Work in progress you can contribute to:
 
 * Prompting for the parameters to be populated into ``.env`` file.
-* Getting iperf to generate multicast traffic from within an OCP cluster, and listening to it from outside. [x]
+* Getting iperf to generate multicast traffic from within an OCP cluster, and listening to it from outside.
 * Setting up the traffic generator as an Openshift's ``job`` instead of a simple pod.
