@@ -13,7 +13,7 @@ spec:
     - name: ROLE
       value: "client"
     - name: SERVER_ADDR
-      value: "192.168.99.100"
+      value: "192.168.99.102"
     - name: TTL
       value: "2"
     - name: LENGTH
@@ -26,3 +26,4 @@ spec:
       value: "u"
     - name: BIND
       value: "224.0.0.1"
+  restartPolicy: OnFailure
