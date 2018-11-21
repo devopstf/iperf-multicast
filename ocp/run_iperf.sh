@@ -45,4 +45,4 @@ else
 fi
 
 # start iperf
-exec iperf -${udp} ${role_arg} ${server_addr} -B ${BIND} --ttl ${ttl} -l ${length} -w ${window} -b ${bandwidth}
+exec iperf -${udp} ${role_arg} ${server_addr} --ttl ${ttl} -l ${length} -w ${window} -b ${bandwidth}

@@ -70,6 +70,15 @@ The traffic generation is based on a ``smple.mp4`` file located in ``/data``. Yo
 
 ### Minishift Demo
 
+**Required:**
+
+* You have to enable a host-only network adapter for your minishift VM within VirtualBox GUI, or via ``VBoxManage`` CLI
+* You need to set up a route for multicast traffic; hence you first list the interfaces within the host machine via ``ifconfig`` finding out which one ``ethX`` is attached to VirtualBox host-only network you are using, and then issue the following command for creating such a route,
+
+```
+route -n add -net 224.0.0.0 netmask 240.0.0.0 dev <ethX>
+```
+
 Deploying iperf traffic generator on minishift:
 
 1. Starting up minishift

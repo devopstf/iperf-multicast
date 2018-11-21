@@ -8,12 +8,12 @@ spec:
   hostNetwork: true
   containers:
   - name: iperf-container
-    image: devopsman/multicast-iperf:ocp-02
+    image: devopsman/multicast-iperf:ocp-04
     env:
     - name: ROLE
       value: "client"
     - name: SERVER_ADDR
-      value: "192.168.99.102"
+      value: "224.0.0.1"
     - name: TTL
       value: "2"
     - name: LENGTH
@@ -24,6 +24,6 @@ spec:
       value: "100K"
     - name: UDP
       value: "u"
-    - name: BIND
-      value: "224.0.0.1"
+#    - name: BIND
+#      value: "239.1.0.0"
   restartPolicy: OnFailure

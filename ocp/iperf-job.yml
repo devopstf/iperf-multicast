@@ -5,6 +5,7 @@ metadata:
 spec:
   parallelism: 1    
   completions: 1    
+  ttlSecondsAfterFinished: 5
   template:         
     metadata:
       name: multicast-iperf
@@ -12,23 +13,24 @@ spec:
       hostNetwork: true
       containers:
       - name: iperf-container
-        image: devopsman/multicast-iperf:ocp-02
+        image: devopsman/multicast-iperf:dev-06
         env:
         - name: ROLE
           value: "client"
         - name: SERVER_ADDR
-          value: "192.168.99.102"
-        - name: TTL
-          value: "2"
-        - name: LENGTH
-          value: "2K"
-        - name: WINDOW
-          value: "8K"
-        - name: BANDWIDTH
-          value: "100K"
-        - name: UDP
-          value: "u"
-        - name: BIND
           value: "224.0.0.1"
+        command: ["-u", "--ttl 2", "-l 2K", "-w 8K", "-b 100K"]
+#        - name: TTL
+#          value: "2"
+#        - name: LENGTH
+#          value: "2K"
+#        - name: WINDOW
+#          value: "8K"
+#        - name: BANDWIDTH
+#          value: "100K"
+#        - name: UDP
+#          value: "u"
+#        - name: BIND
+#          value: "224.0.0.1"
       restartPolicy: OnFailure
       activeDeadlineSeconds: 30
