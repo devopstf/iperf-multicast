@@ -10,6 +10,8 @@ The iperf process configured as client (i.e. traffic generator) is deployed as a
 oc adm policy add-scc-to-user privileged admin
 ```
 
+(*) ``scc`` stands for [Security Context Constraints](https://docs.openshift.com/enterprise/3.0/admin_guide/manage_scc.html).
+
 ## Pre-requisites
 
 We need a few things for getting this demo working:
