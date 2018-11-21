@@ -91,9 +91,17 @@ minishift start --vm-driver=virtualbox
 
 2. Starting up the multicast listener in our localhost
 
+You can use a simple socket binding via a python script,
+
 ```
 cd python/
 python multicast-client.py
+```
+
+Or you can simply set up an iperf server,
+
+```
+iperf -s -u -B 224.0.0.1 -i 1
 ```
 
 3. Creating a pod
