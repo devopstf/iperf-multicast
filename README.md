@@ -81,6 +81,18 @@ The traffic generation is based on a ``smple.mp4`` file located in ``/data``. Yo
 
 ### Minishift Demo
 
++------------------+                       +------------------+          
+|minishift VM      |                       |                  |          
+|CentOS 7          |                       |    Localhost     |          
+|NAT + Host-Only   |               IP      |                  |          
+|                  |           192.168.99.1|                  |          
+|     +--------+   |  IP      /------------- iPerf2 Server    |          
+|     |iPerf2  |--------------     IGMP    |    (Listener)    |          
+|     |Pod     |192.168.99.100   224.0.0.1 |                  |          
+|     +--------+   |                       |                  |          
+|                  |                       |                  |          
++------------------+                       +------------------+          
+
 **Required:**
 
 * You have to enable a host-only network adapter for your minishift VM within VirtualBox GUI, or via ``VBoxManage`` CLI
