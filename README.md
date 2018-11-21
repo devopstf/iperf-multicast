@@ -138,9 +138,9 @@ oc delete pod multicast-iperf --grace-period=0
 
 Work in progress you can contribute to:
 
-* Prompting for the parameters to be populated into ``.env`` file.
-* Getting iperf to generate multicast traffic from within an OCP cluster, and listening to it from outside.
-* Setting up the traffic generator as an Openshift's ``job`` instead of a simple pod.
+* Prompting for the parameters to be populated into ``.env`` file ⣿⣿⣀⣀⣀⣀⣀⣀⣀⣀ 20%	
+* Getting iperf to generate multicast traffic from within an OCP cluster, and listening to it from outside ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦ 95%	
+* Setting up the traffic generator as an Openshift's ``job`` instead of a simple pod ⣿⣿⣿⣿⣀⣀⣀⣀⣀⣀ 40%
 
 ## References
 
