@@ -134,13 +134,22 @@ oc logs multicast-iperf
 oc delete pod multicast-iperf --grace-period=0
 ```
 
+You can find a simple ``Makefile`` inside ``ocp`` folder for playing around with the demo more easily, including the following receipes:
+
+```
+build                          Building a new image
+clean                          Delete pod
+logs                           Gathering logs from completed pod and writing it to a file
+run                            Create the pod, and follow the logs from minishift
+```
+
 ## Develop
 
 Work in progress you can contribute to:
 
-* Prompting for the parameters to be populated into ``.env`` file ⣿⣿⣀⣀⣀⣀⣀⣀⣀⣀ 20%	
-* Getting iperf to generate multicast traffic from within an OCP cluster, and listening to it from outside ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦ 95%	
-* Setting up the traffic generator as an Openshift's ``job`` instead of a simple pod ⣿⣿⣿⣿⣀⣀⣀⣀⣀⣀ 40%
+* Prompting for the parameters to be populated into ``.env`` file. ⣿⣿⣀⣀⣀⣀⣀⣀⣀⣀ 20%	
+* Getting iperf to generate outbound multicast traffic from minishift. ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦ 95%	
+* Setting up the traffic generator as an Openshift's ``job`` instead of a simple pod. ⣿⣿⣿⣿⣀⣀⣀⣀⣀⣀ 40%
 
 ## References
 
