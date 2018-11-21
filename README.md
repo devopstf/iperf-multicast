@@ -22,6 +22,15 @@ We need a few things for getting this demo working:
 * Your host's network interface must be multicast enabled.
 * The same applies for your host's firewall.
 
+## Environment
+
+This demo has been accomplished using the following environment:
+
+* **Localhost:** MacBookPro9,2 Mac OS X 10.13.6 High Sierra
+* **VM provider:** VirtualBox 5.2.16 r123759
+* **iPerf:** version 2.0.12 (brew installed) | version 2.0.5 (FROM Alpine 3.1 docker image)
+* **minishift** version 1.21.0+a8c8b37 | CentOS 7 host virtual machine
+
 ## Usage
 
 ### Docker demo
