@@ -88,6 +88,11 @@ oc adm policy add-scc-to-user privileged <your-demo-user>
 
 or, we can create a new service account, assingning the ``hostnetwork`` scc to it within the namespace of our project. In such a case we could use a non-privileged developer user account for launching the pod for generating outbound multicast traffic.
 
+```
+oc create serviceaccount multicast-sender
+oc adm policy add-scc-to-user hostnetwork -z multicast-sender
+```
+
 **Deploying iperf traffic generator on minishift:**
 
 1. Starting up minishift
