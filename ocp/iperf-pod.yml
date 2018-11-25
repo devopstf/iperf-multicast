@@ -26,4 +26,5 @@ spec:
       value: "u"
 #    - name: BIND
 #      value: "239.1.0.0"
+  serviceAccountName: multicast-sender
   restartPolicy: OnFailure
