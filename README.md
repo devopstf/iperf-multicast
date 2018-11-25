@@ -1,17 +1,5 @@
 # Using iperf for testing UDP Multicast traffic
 
-This demo is a simplified version of [Mark Betz's repo](https://github.com/Markbnj/cluster-iperf). This version is focused on Multicast UDP traffic.
-
-When we are dealing with multicast addresses, we have to take into account that **the ``224.0.0.0/24`` CIDR has to be used for local networking**. Within this demo we are using a Virtual Box's internal or host-only network subscribed to ``224.0.0.1`` address (All the hosts within the local network). Our ``minishift`` VM is a Centos-based host machine, provisioned with OverlayFS and its ``firewalld`` service is set to inactive.
-
-The iperf process configured as client (i.e. traffic generator) is deployed as a simple pod in ``hostNetwork`` mode, that is an anti-pattern requiring priviledged access to Openshift API, hence we should issue the following command before deploying it (assuming we are logging in as the admin user into minishift):
-
-```
-oc adm policy add-scc-to-user privileged admin
-```
-
-(*) ``scc`` stands for [Security Context Constraints](https://docs.openshift.com/enterprise/3.0/admin_guide/manage_scc.html).
-
 ## Pre-requisites
 
 We need a few things for getting this demo working:
@@ -90,7 +78,15 @@ The traffic generation is based on a ``smple.mp4`` file located in ``/data``. Yo
 route -n add -net 224.0.0.0 netmask 240.0.0.0 dev <ethX>
 ```
 
-Deploying iperf traffic generator on minishift:
+When we are dealing with multicast addresses, we have to take into account that **the ``224.0.0.0/24`` CIDR has to be used for local networking**. Within this demo we are using a Virtual Box's internal or host-only network subscribed to ``224.0.0.1`` address (All the hosts within the local network). Our ``minishift`` VM is a Centos-based host machine, provisioned with OverlayFS and its ``firewalld`` service is set to inactive.
+
+The iperf process configured as client (i.e. traffic generator) is deployed as a simple pod in ``hostNetwork`` mode, that is an anti-pattern requiring "non restricted" access to Openshift API, hence we should issue the following command before deploying it:
+
+```
+oc adm policy add-scc-to-user privileged <your-demo-user>
+```
+
+**Deploying iperf traffic generator on minishift:**
 
 1. Starting up minishift
 
@@ -158,3 +154,5 @@ Work in progress you can contribute to:
 * [Multicast Addressing Pitfalls](http://aviadezra.blogspot.com/2009/07/multicast-ip-udp-igmp-multi-homed.html)
 * [iPerf](https://iperf.fr)
 * [How to allow multicast traffic with firewallD in RHEL 7](https://access.redhat.com/solutions/1587673)
+* [Understanding Service Accounts and SCCs](https://blog.openshift.com/understanding-service-accounts-sccs/)
+* [Mark Betz's repo](https://github.com/Markbnj/cluster-iperf)

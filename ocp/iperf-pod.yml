@@ -21,7 +21,7 @@ spec:
     - name: WINDOW
       value: "8K"
     - name: BANDWIDTH
-      value: "100K"
+      value: "1M"
     - name: UDP
       value: "u"
 #    - name: BIND
