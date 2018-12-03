@@ -75,7 +75,8 @@ The traffic generation is based on a ``smple.mp4`` file located in ``/data``. Yo
 * You need to set up a route for multicast traffic; hence you first list the interfaces within the host machine via ``ifconfig`` finding out which one ``ethX`` is attached to VirtualBox host-only network you are using, and then issue the following command for creating such a route,
 
 ```
-route -n add -net 224.0.0.0 netmask 240.0.0.0 dev <ethX>
+[local]$ minishift ssh
+[docker@minishift]$ sudo route -n add -net 224.0.0.0 netmask 240.0.0.0 dev <ethX>
 ```
 
 When we are dealing with multicast addresses, we have to take into account that **the ``224.0.0.0/24`` CIDR has to be used for local networking**. Within this demo we are using a Virtual Box's internal or host-only network subscribed to ``224.0.0.1`` address (All the hosts within the local network). Our ``minishift`` VM is a Centos-based host machine, provisioned with OverlayFS and its ``firewalld`` service is set to inactive.
