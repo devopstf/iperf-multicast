@@ -168,3 +168,4 @@ Work in progress you can contribute to:
 ## Tips
 
 * Getting multicast groups subscriptions from Windows, ``netsh interface ip show joins``
+* Getting multicast groups subscriptions from Linux ``netstat -g``
