@@ -164,3 +164,7 @@ Work in progress you can contribute to:
 * [How to allow multicast traffic with firewallD in RHEL 7](https://access.redhat.com/solutions/1587673)
 * [Understanding Service Accounts and SCCs](https://blog.openshift.com/understanding-service-accounts-sccs/)
 * [Mark Betz's repo](https://github.com/Markbnj/cluster-iperf)
+
+## Tips
+
+* Getting multicast groups subscriptions from Windows, ``netsh interface ip show joins``
